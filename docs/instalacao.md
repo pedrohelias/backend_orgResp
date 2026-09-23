@@ -20,5 +20,8 @@
     "dev": "nodemon src/server.js"
     npm run dev
 
+### 5.5 - trocar o type de commonjs para module
+
+### 6 - Adição das rotas (uma camada de rota para cada parte da api)
 
 
