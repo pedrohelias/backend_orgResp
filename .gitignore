@@ -21,3 +21,8 @@ Thumbs.db
 # Ficheiros de build/distribuição (se usares TypeScript/Babel no futuro)
 dist/
 build/
+
+
+# Outros arquivos
+
+prisma-8.md
