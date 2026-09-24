@@ -5,7 +5,7 @@ const client = db.default || db
 const connectDB = async () => {
     try{
 
-        await db `SELECT 1`
+        await db.connect()
         console.log("Conexão com o banco funcionando!")
 
     }catch(error){
@@ -17,7 +17,7 @@ const connectDB = async () => {
 
 const disconnectDB = async () => {
     try{
-        await db.end()
+        await db.close()
         console.log("Banco desconectado!")
         
     }catch(error){
