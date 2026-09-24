@@ -51,6 +51,7 @@ PostgreSQL
 
 ### 7 - Toda vez que alterar a estrutura do banco de dados: 
 
+    npx prisma contract emit
     npx prisma db update
     npx prisma db sign
     npx prisma generate (se necessário)
@@ -62,3 +63,8 @@ PostgreSQL
 
     # 2. Atualiza os tipos do autocomplete no projeto
     npx prisma generate
+
+
+### 8 Import config do dotenv no server.js e adicionar o config()
+
+Construir o arquivo db.js para servir de utilitário e testar o banco toda vez que subir a aplicação, garantindo que não tem problema

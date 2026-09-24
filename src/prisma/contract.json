@@ -15,6 +15,20 @@
         "models": {
           "User": {
             "fields": {
+              "birthday": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/timestamptz-temporal@1",
+                  "kind": "scalar"
+                }
+              },
+              "cpf": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
               "email": {
                 "nullable": false,
                 "type": {
@@ -35,11 +49,24 @@
                   "codecId": "pg/text@1",
                   "kind": "scalar"
                 }
+              },
+              "password": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
               }
             },
             "relations": {},
             "storage": {
               "fields": {
+                "birthday": {
+                  "column": "birthday"
+                },
+                "cpf": {
+                  "column": "cpf"
+                },
                 "email": {
                   "column": "email"
                 },
@@ -48,6 +75,9 @@
                 },
                 "name": {
                   "column": "name"
+                },
+                "password": {
+                  "column": "password"
                 }
               },
               "namespaceId": "public",
@@ -65,6 +95,16 @@
           "table": {
             "user": {
               "columns": {
+                "birthday": {
+                  "codecId": "pg/timestamptz-temporal@1",
+                  "nativeType": "timestamptz",
+                  "nullable": false
+                },
+                "cpf": {
+                  "codecId": "pg/text@1",
+                  "nativeType": "text",
+                  "nullable": false
+                },
                 "email": {
                   "codecId": "pg/text@1",
                   "nativeType": "text",
@@ -83,6 +123,11 @@
                   "codecId": "pg/text@1",
                   "nativeType": "text",
                   "nullable": false
+                },
+                "password": {
+                  "codecId": "pg/text@1",
+                  "nativeType": "text",
+                  "nullable": false
                 }
               },
               "foreignKeys": [],
@@ -97,6 +142,11 @@
                   "columns": [
                     "email"
                   ]
+                },
+                {
+                  "columns": [
+                    "cpf"
+                  ]
                 }
               ]
             }
@@ -106,7 +156,7 @@
         "kind": "postgres-schema"
       }
     },
-    "storageHash": "635bc1afbca70c0b94adb5b791d5748346cfb1523fa1f83d5869052c6e88e52b"
+    "storageHash": "22076584677cdc678a1fa9bfbaec118d9b9655a7619b335962621ce0fcd7f44b"
   },
   "capabilities": {
     "postgres": {
