@@ -68,3 +68,9 @@ PostgreSQL
 ### 8 Import config do dotenv no server.js e adicionar o config()
 
 Construir o arquivo db.js para servir de utilitário e testar o banco toda vez que subir a aplicação, garantindo que não tem problema
+
+### 9 Construir as rotas de autenticação
+
+### 10 Instalar o bcrypt
+
+    npm i bcryptjs

@@ -34,7 +34,7 @@ import type {
 } from '@prisma/orm-postgres/contract/types';
 
 export type StorageHash =
-  StorageHashBase<'08f5c84ec7904dfb3e9ad2bc9962c9f5740044c6634d6a82351884259a2be757'>;
+  StorageHashBase<'3a0e9254cd8213820d91b6f6c4f6a4b29c3c0a413f53b23f4b4006ed897be146'>;
 export type ExecutionHash =
   ExecutionHashBase<'90ee3dace7edf215adda6f021281d8906036e22d6d87d77b5d551e7fcb223279'>;
 export type ProfileHash =
@@ -252,6 +252,7 @@ export type FieldOutputTypes = {
       readonly name: CodecTypes['pg/text@1']['output'];
       readonly cpf: CodecTypes['pg/text@1']['output'];
       readonly email: CodecTypes['pg/text@1']['output'];
+      readonly data_nascimento: CodecTypes['pg/date-temporal@1']['output'];
       readonly nivel_usuario: 'ADMIN' | 'USUARIO';
       readonly senha: CodecTypes['pg/text@1']['output'];
       readonly setor: 'ADMINISTRATIVO' | 'RH' | 'FINANCEIRO' | 'TI';
@@ -277,6 +278,7 @@ export type FieldInputTypes = {
       readonly name: CodecTypes['pg/text@1']['input'];
       readonly cpf: CodecTypes['pg/text@1']['input'];
       readonly email: CodecTypes['pg/text@1']['input'];
+      readonly data_nascimento: CodecTypes['pg/date-temporal@1']['input'];
       readonly nivel_usuario: 'ADMIN' | 'USUARIO';
       readonly senha: CodecTypes['pg/text@1']['input'];
       readonly setor: 'ADMINISTRATIVO' | 'RH' | 'FINANCEIRO' | 'TI';
@@ -299,6 +301,7 @@ export type StorageColumnTypes = {
     };
     readonly funcionario: {
       readonly cpf: CodecTypes['pg/text@1']['output'];
+      readonly data_nascimento: CodecTypes['pg/date-temporal@1']['output'];
       readonly email: CodecTypes['pg/text@1']['output'];
       readonly id: CodecTypes['pg/text@1']['output'];
       readonly name: CodecTypes['pg/text@1']['output'];
@@ -324,6 +327,7 @@ export type StorageColumnInputTypes = {
     };
     readonly funcionario: {
       readonly cpf: CodecTypes['pg/text@1']['input'];
+      readonly data_nascimento: CodecTypes['pg/date-temporal@1']['input'];
       readonly email: CodecTypes['pg/text@1']['input'];
       readonly id: CodecTypes['pg/text@1']['input'];
       readonly name: CodecTypes['pg/text@1']['input'];
@@ -347,6 +351,7 @@ export namespace Models {
     name: CodecTypes['pg/text@1']['output'];
     cpf: CodecTypes['pg/text@1']['output'];
     email: CodecTypes['pg/text@1']['output'];
+    data_nascimento: CodecTypes['pg/date-temporal@1']['output'];
     nivel_usuario: 'ADMIN' | 'USUARIO';
     senha: CodecTypes['pg/text@1']['output'];
     setor: 'ADMINISTRATIVO' | 'RH' | 'FINANCEIRO' | 'TI';
@@ -441,6 +446,11 @@ type ContractBase = Omit<
                 readonly email: {
                   readonly nativeType: 'text';
                   readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                };
+                readonly data_nascimento: {
+                  readonly nativeType: 'date';
+                  readonly codecId: 'pg/date-temporal@1';
                   readonly nullable: false;
                 };
                 readonly nivel_usuario: {
@@ -634,6 +644,10 @@ type ContractBase = Omit<
                 readonly nullable: false;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
               };
+              readonly data_nascimento: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/date-temporal@1' };
+              };
               readonly nivel_usuario: {
                 readonly nullable: false;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
@@ -668,6 +682,7 @@ type ContractBase = Omit<
                 readonly name: { readonly column: 'name' };
                 readonly cpf: { readonly column: 'cpf' };
                 readonly email: { readonly column: 'email' };
+                readonly data_nascimento: { readonly column: 'data_nascimento' };
                 readonly nivel_usuario: { readonly column: 'nivel_usuario' };
                 readonly senha: { readonly column: 'senha' };
                 readonly setor: { readonly column: 'setor' };

@@ -1,10 +1,67 @@
 // use prisma-8
 
-model User {
-  id    Int    @id @default(autoincrement())
-  name  String
-  email String @unique
-  cpf String @unique
-  birthday DateTime
-  password String 
+model Funcionario {
+  id                String                  @id @default(uuid())
+  name              String
+  cpf               String                  @unique
+  email             String                  @unique
+  //data_nascimento   Date
+  nivel_usuario     NivelUsuario
+  senha             String
+  setor             Setor
+
+  atribuicoes       FuncionarioAtribuicao[]
+}
+
+
+model FuncionarioAtribuicao {
+  id              String      @id @default(uuid())
+
+  funcionario_id  String
+  atribuicao_id   String
+
+  data_inicio     DateTime
+  observacao      String?
+
+  funcionario     Funcionario  @relation(
+    fields: [funcionario_id],
+    references: [id]
+  )
+
+  atribuicao      Atribuicao   @relation(
+    fields: [atribuicao_id],
+    references: [id]
+  )
+
+  // Impede o mesmo funcionário de receber
+  // a mesma atribuição duas vezes
+  @@unique([funcionario_id, atribuicao_id])
+}
+
+
+model Atribuicao {
+  id              String                    @id @default(uuid())
+  nome            String
+  descricao       String
+
+  funcionarios    FuncionarioAtribuicao[]
+
+  // Impede duplicar a mesma combinação
+  // de nome + descrição
+  @@unique([nome, descricao])
+}
+
+
+enum NivelUsuario {
+  ADMIN
+  USUARIO
+}
+
+
+enum Setor {
+  // coloque aqui os setores que você definiu
+  ADMINISTRATIVO
+  RH
+  FINANCEIRO
+  TI
 }
